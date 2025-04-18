@@ -16,7 +16,7 @@ void	_kill_(int server_pid, int sig)
 {
 	if (kill(server_pid, sig) < 0)
 	{
-		ft_printf("Kill failed.\n");
+		ft_putstr("Kill failed.\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -38,7 +38,7 @@ void	_signal_(int sig, void *func, int sig_info)
 	sigaddset(&sa.sa_mask, SIGUSR2);
 	if (sigaction(sig, &sa, NULL) < 0)
 	{
-		ft_printf("Sigaction failed.\n");
+		ft_putstr("Sigaction failed.\n");
 		exit(EXIT_FAILURE);
 	}
 }

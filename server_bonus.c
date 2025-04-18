@@ -12,6 +12,20 @@
 
 #include "minitalk.h"
 
+/*in case to check the time of server response*/
+
+/*#include <stdio.h>*/
+/*#include <time.h>*/
+
+/*static clock_t start_time = 0;*/
+
+/*if (start_time == 0)*/
+/*start_time = clock();*/
+/*clock_t end_time = clock();*/
+/*double time_taken = (double)(end_time - start_time) / CLOCKS_PER_SEC;*/
+/*printf("\n[Message complete in %.6f seconds]\n", time_taken);*/
+/*start_time = 0;*/
+
 static void	handler(int signo, siginfo_t *info)
 {
 	static char		c;
@@ -45,7 +59,7 @@ int	main(void)
 
 	server_pid = getpid();
 	ft_putstr("Server pid: ");
-	ft_putnbr(server_pid,'i');
+	ft_putnbr(server_pid, 'i');
 	ft_putchar('\n');
 	_signal_(SIGUSR1, handler, 1);
 	_signal_(SIGUSR2, handler, 1);

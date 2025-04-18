@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "./printf/ft_printf.h"
 
 enum e_status
 {
@@ -29,4 +28,8 @@ enum e_status
 
 void	_signal_(int signal, void *func, int sig_info);
 void	_kill_(int server_pid, int signal);
+void	ft_putstr(char *str);
+void	ft_putnbr(long long n, char type);
+void	ft_putchar(char c);
+
 #endif
