@@ -26,10 +26,15 @@ enum e_status
 	BUSY,
 };
 
+/*minitalk utils*/
 void	_signal_(int signal, void *func, int sig_info);
 void	_kill_(int server_pid, int signal);
+
+/*libft functions*/
 void	ft_putstr(char *str);
 void	ft_putnbr(long long n, char type);
 void	ft_putchar(char c);
+int		ft_strlen(char *str);
+int		ft_atoi(char *str);
 
 #endif

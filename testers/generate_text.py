@@ -2,7 +2,7 @@
 import lorem, random
 
 emojis = ["😊", "🚀", "🔥", "🎉", "💡", "💻", "📚", "🧠", "🌟", "✨"]
-text = lorem.paragraph() * 10
+text = lorem.paragraph() * 100
 words = text.split()
 
 print(" ".join([

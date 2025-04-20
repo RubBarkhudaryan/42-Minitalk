@@ -45,7 +45,7 @@ int	main(void)
 
 	server_pid = getpid();
 	ft_putstr("Server pid: ");
-	ft_putnbr(server_pid,'i');
+	ft_putnbr(server_pid, 'i');
 	ft_putchar('\n');
 	_signal_(SIGUSR1, handler, 1);
 	_signal_(SIGUSR2, handler, 1);
