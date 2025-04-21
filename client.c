@@ -11,19 +11,13 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
 volatile sig_atomic_t	g_server = BUSY;
 
 static void	ack_handler(int signal)
 {
 	g_server = READY;
-	signal = (int)signal;
-}
-
-static void	end_handler(int signal)
-{
-	ft_putstr("OK!\n");
-	exit(EXIT_SUCCESS);
 	signal = (int)signal;
 }
 
@@ -55,10 +49,10 @@ int	main(int argc, char **argv)
 		ft_putstr("Usage: ./client <pid> \"message\"\n");
 		exit(EXIT_FAILURE);
 	}
-	server = atoi(argv[1]);
+	server = ft_atoi(argv[1]);
 	message = argv[2];
 	_signal_(SIGUSR1, ack_handler, 0);
-	_signal_(SIGUSR2, end_handler, 0);
+	_signal_(SIGUSR2, ack_handler, 0);
 	while (*message)
 		send_char(*message++, server);
 	send_char('\0', server);

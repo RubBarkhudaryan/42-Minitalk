@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		ft_putstr("Usage: ./client <pid> \"message\"\n");
 		exit(EXIT_FAILURE);
 	}
-	server = atoi(argv[1]);
+	server = ft_atoi(argv[1]);
 	message = argv[2];
 	_signal_(SIGUSR1, ack_handler, 0);
 	_signal_(SIGUSR2, end_handler, 0);
