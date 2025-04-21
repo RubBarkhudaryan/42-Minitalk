@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 23:08:34 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/08 23:08:34 by rbarkhud         ###   ########.fr       */
+/*   Created: 2025/04/21 19:19:25 by rbarkhud          #+#    #+#             */
+/*   Updated: 2025/04/21 19:19:25 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	handler(int signo, siginfo_t *info)
 {
-	static char		c;
-	static int		bit;
-	static int		client;
+	static char	c;
+	static int	bit;
+	static int	client;
 
 	if (info->si_pid)
 		client = info->si_pid;
@@ -31,7 +31,7 @@ static void	handler(int signo, siginfo_t *info)
 		if (c == '\0')
 		{
 			ft_putchar('\n');
-			_kill_(client, SIGUSR2);
+			_kill_(client, SIGUSR1);
 			return ;
 		}
 		ft_putchar(c);

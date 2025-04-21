@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 23:08:31 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/08 23:08:31 by rbarkhud         ###   ########.fr       */
+/*   Created: 2025/04/21 19:21:19 by rbarkhud          #+#    #+#             */
+/*   Updated: 2025/04/21 19:21:19 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
 volatile sig_atomic_t	g_server = BUSY;
 
@@ -52,7 +51,6 @@ int	main(int argc, char **argv)
 	server = ft_atoi(argv[1]);
 	message = argv[2];
 	_signal_(SIGUSR1, ack_handler, 0);
-	_signal_(SIGUSR2, ack_handler, 0);
 	while (*message)
 		send_char(*message++, server);
 	send_char('\0', server);
