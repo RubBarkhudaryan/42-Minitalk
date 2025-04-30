@@ -1,93 +1,78 @@
-# 42 Push-Swap
 
-`push_swap` is a sorting algorithm project where you must sort a stack of integers using a minimal set of operations. You write two programs:
+---
 
-1. **push_swap** – calculates and prints the list of operations to sort the given numbers.
-2. **checker** – reads a list of operations and verifies whether they sort the stack correctly.
+## 42-MiniTalk
+
+# 42 Minitalk
+
+`minitalk` is a small client-server messaging system that communicates via UNIX signals. You must implement:
+
+- **server** – waits for incoming messages (bit-by-bit via `SIGUSR1`/`SIGUSR2`), reconstructs them, and prints to stdout.  
+- **client** – sends a string message to the server by encoding each character’s bits into signals.
 
 ---
 
 ## Table of Contents
 
 - [Features](#features)  
-- [Usage](#usage)  
+- [Setup & Installation](#setup--installation)  
   - [Compile the library](#compile-the-library)  
-  - [Running push_swap](#running-push_swap)  
-  - [Running checker](#running-checker)  
-- [Rules & Operations](#rules--operations)  
+- [Usage](#usage)  
+- [Bonus](#bonus)  
 - [Project Structure](#project-structure)  
 - [Author](#author)  
-- [License](#license)  
+
 
 ---
 
 ## Features
 
-- Validates input (integers only, no duplicates, within 32-bit range).  
-- Supports the following operations:
-  - **Swap:** `sa`, `sb`, `ss`  
-  - **Push:** `pa`, `pb`  
-  - **Rotate:** `ra`, `rb`, `rr`  
-  - **Reverse Rotate:** `rra`, `rrb`, `rrr`  
-- Optimized for minimal moves on small (2–5 elems) and large stacks.  
+- Bit-wise transmission using `kill()` and signal handlers.  
+- Acknowledgement of each character to ensure reliable delivery.  
+- Clean API in `minitalk.h` for:
+  ```
+  void _signal_(int sig, void *handler, int options);
+  void _kill_(int server_pid, int sig);
+  ```
 
----
-
-## Usage
-
-### Compile the library (bash)
-
+## Setup & Instalation
 ```
-git clone https://github.com/RubBarkhudaryan/42-Push-Swap.git
-cd 42-Push-Swap
+git clone https://github.com/RubBarkhudaryan/42-Minitalk.git
+cd 42-Minitalk
 make
 ```
 
-# This builds:
+**This produces two executables:** ```server``` and ``` client ```
 
-**push_swap (your main sorting program)**, **checker_linux (the checker for Linux)**
+## Usage
+**Start the server**
 
-Running push_swap
-bash
-Копировать
-Редактировать
-./push_swap 3 2 5 1 4
-It will print a sequence of operations, one per line, that, when applied to the stack, sorts it in ascending order.
+```./server```
+It will print its PID. Leave it running.
 
-## Running checker
-You can pipe operations into the checker to verify:
-# Example: check a correct solution
-./push_swap 3 2 5 1 4 | ./checker_linux 3 2 5 1 4
-# Output should be "OK"
+**Send a message**
 
-# Example: check an incorrect sequence
-echo -e "sa\nra\npb" | ./checker_linux 3 2 5 1 4
-# Output should be "KO"
+```./client <SERVER_PID> "Hello, 42!"```
+The server will rebuild the string and print Hello, 42! to its stdout.
 
-## Rules & Operations
-# No global variables
+## Bonus
+server_bonus.c / client_bonus.c
+Implements more robust acknowledgment logic to confirm receipt of each bit before sending the next.
 
-Allowed functions: only those you implement in your own libft (no <stdlib.h> conversion helpers, except for memory management)
-Memory leaks must be avoided
-Errors (invalid input, memory failures) must print Error\n to stderr and exit with status 1
-
-# Project Structure
+## Project Structure
 
 ```
-42-Push-Swap/
-├── bonus/               # Optional extra features
-├── libft/               # Your custom libft with helpers
-├── src/                 # All push_swap and checker sources
-│   ├── ps_main.c
-│   ├── ps_validation.c
-│   ├── ps_init_stack.c
-│   ├── ps_sort_stack.c
-|   ├── pushswap.h       
-│   ├── ... (ops, utils, indexing)
-├── checker_linux        # Built checker executable
-├── push_swap            # Built push_swap executable
+42-Minitalk/
+├── client.c           # Basic client
+├── client_bonus.c     # Bonus client with robust ACK
+├── server.c           # Basic server
+├── server_bonus.c     # Bonus server with enhanced logic
+├── minitalk_utils.c   # Internal bit-manipulation helpers
+├── libft_functions.c  # ft_putchar, ft_putstr, ft_atoi, …
+├── minitalk.h         # Shared prototypes & enums
 ├── Makefile
 └── README.md
 ```
+
 **Author
 Rub Barkhudaryan**
