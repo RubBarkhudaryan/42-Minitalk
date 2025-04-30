@@ -64,6 +64,7 @@ Implements more robust acknowledgment logic to confirm receipt of each bit befor
 
 ```
 42-Minitalk/
+├── testers            # Testers to ensure that the unicode characters are handled
 ├── client.c           # Basic client
 ├── client_bonus.c     # Bonus client with robust ACK
 ├── server.c           # Basic server
