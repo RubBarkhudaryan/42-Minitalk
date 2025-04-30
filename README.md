@@ -27,7 +27,8 @@
 
 ## Features
 
-- Bit-wise transmission using `kill()` and signal handlers.  
+- Bit-wise transmission using `kill()` and signal handlers.
+- Unicode characters handled.
 - Acknowledgement of each character to ensure reliable delivery.  
 - Clean API in `minitalk.h` for:
   ```
